@@ -6,7 +6,7 @@ instance_id=$(AWS_PROFILE=pshah-dev aws ec2 run-instances --image-id ami-b73b63a
 echo $instance_id
 
 #creating tags
-#AWS_PROFILE=pshah-dev aws ec2 create-tags --resources $instance_id --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56; 
+AWS_PROFILE=pshah-dev aws ec2 create-tags --resources $instance_id --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56; 
 
 #rebooting instances
 AWS_PROFILE=pshah-dev aws ec2 reboot-instances --instance-ids $instance_id
