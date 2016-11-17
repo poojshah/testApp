@@ -4,7 +4,7 @@
                     "Ebs": {
                         "DeleteOnTermination": true, 
                         "SnapshotId": "snap-fe8a3c04", 
-                        "VolumeSize": 8, 
+                        "VolumeSize": 12, 
                         "VolumeType": "gp2"
                     }
                 }
