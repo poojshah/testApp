@@ -14,7 +14,7 @@ echo $instance_id
 instance0=$(echo $instance_id | sed 's/^"\(.*\)"/\1/')
 
 #creating tags
-AWS_PROFILE=pshah-dev aws ec2 create-tags --resources $instance0 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56; 
+AWS_PROFILE=pshah-dev aws ec2 create-tags --resources $instance0 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer; 
 
 #rebooting instances
 AWS_PROFILE=pshah-dev aws ec2 reboot-instances --instance-ids $instance0

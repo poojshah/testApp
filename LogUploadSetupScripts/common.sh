@@ -31,7 +31,8 @@
 exec > >(tee --append /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
 # This is the URL to the folder that contains all the data files needed by the script.
-sScriptURL=http://mis.nemetschek.net/EC2/SetupScripts
+#sScriptURL=http://mis.nemetschek.net/EC2/SetupScripts
+sScriptURL=.
 sDataURL=${sScriptURL}/data
 
 # Locations of configuration files.
