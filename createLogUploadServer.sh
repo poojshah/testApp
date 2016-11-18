@@ -6,8 +6,11 @@
 #Stop and show if  error occurs
 #set -e
 
+#userdata=$(wget https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh)
+userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
+
 #Create instance
-instance_id=$(AWS_PROFILE=pshah-dev aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9b47fde6 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data file://LogUploadSetupScripts/common.sh --block-device-mappings file://LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId');
+instance_id=$(AWS_PROFILE=pshah-dev aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9b47fde6 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data $userdata --block-device-mappings file://LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId');
 
 echo $instance_id
 

@@ -32,7 +32,7 @@ exec > >(tee --append /var/log/user-data.log|logger -t user-data -s 2>/dev/conso
 
 # This is the URL to the folder that contains all the data files needed by the script.
 #sScriptURL=http://mis.nemetschek.net/EC2/SetupScripts
-sScriptURL=.
+sScriptURL=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts
 sDataURL=${sScriptURL}/data
 
 # Locations of configuration files.
