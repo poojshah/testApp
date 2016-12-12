@@ -1,0 +1,28 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson284968448046345780.sh
++ userdata=
+++ wget https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
+--2016-12-08 20:59:49--  https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 52.216.64.163
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|52.216.64.163|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8562 (8.4K) [application/x-sh]
+Saving to: ‘common.sh.1’
+
+     0K ........                                              100% 61.5M=0s
+
+2016-12-08 20:59:50 (61.5 MB/s) - ‘common.sh.1’ saved [8562/8562]
+
++ mapping=(https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json)
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name generic_kp --subnet-id subnet-22fd636b --user-data --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+aws: error: argument --user-data: expected one argument
++ instance_id=
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

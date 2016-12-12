@@ -1,0 +1,21 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson4658439874468941412.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-6872ccf0"'
++ echo '"i-6872ccf0"'
+"i-6872ccf0"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-6872ccf0"'
++ instance0=i-6872ccf0
++ aws ec2 create-tags --resources i-6872ccf0 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-6872ccf0
+++ aws ec2 describe-instances --instance-ids i-6872ccf0 --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.222.153
++ echo ip_address=172.30.222.153
+ip_address=172.30.222.153
+/tmp/hudson4658439874468941412.sh: line 25: syntax error near unexpected token `do'
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

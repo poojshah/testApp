@@ -1,0 +1,9 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson8806876447680682665.sh
++ whoami
+jenkins
++ ip_address=172.30.77.98
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/httpd-site.conf 'ec2-user@172.30.77.98:~'
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/LogUpload.php 'ec2-user@172.30.77.98:~'
+Finished: SUCCESS

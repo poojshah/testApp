@@ -1,0 +1,11 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson3740161001679705076.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name generic_kp.pem --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
+
+An error occurred (InvalidKeyPair.NotFound) when calling the RunInstances operation: The key pair 'generic_kp.pem' does not exist
++ instance_id=
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

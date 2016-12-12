@@ -1,0 +1,13 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson3316017380203645939.sh
++ instance0=i-33833dab
++ echo
+
+++ aws ec2 describe-instances --instance-ids i-33833dab --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.104.139
++ echo ip_address=172.30.104.139
+ip_address=172.30.104.139
+/tmp/hudson3316017380203645939.sh: line 28: syntax error near unexpected token `do'
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

@@ -1,0 +1,29 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson2290956168976172418.sh
++ instance0=i-33833dab
++ echo i-33833dab
+i-33833dab
+++ aws ec2 describe-instances --instance-ids i-33833dab --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.104.139
++ echo ip_address=172.30.104.139
+ip_address=172.30.104.139
+++ aws ec2 describe-instance-status --instance-ids i-33833dab --query 'InstanceStatuses[0].InstanceStatus.Status'
++ '[' '"ok"' = ok ']'
++ ssh -tt -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.104.139 -o StrictHostKeyChecking=no
+Last login: Fri Dec  9 11:01:53 2016 from ip-172-30-228-121.ec2.internal
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2016.09-release-notes/
+mkdir ~/efs-mount-point  
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.amazonaws.com:/   ~/efs-mount-point 
+]0;ec2-user@LogUploadWebServer:~[?1034h[ec2-user@LogUploadWebServer ~]$ mkdir ~/efs-mount-point  
+mkdir: cannot create directory ‘/home/ec2-user/efs-mount-point’: File exists
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576 ,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.ama zonaws.com:/   ~/efs-mount-point 
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ Killed by signal 15.
+Build was aborted
+Aborted by [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Finished: ABORTED

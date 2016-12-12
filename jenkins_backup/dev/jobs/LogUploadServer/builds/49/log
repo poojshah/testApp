@@ -1,0 +1,104 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson3643036557479575794.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-26f74ebe"'
++ echo '"i-26f74ebe"'
+"i-26f74ebe"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-26f74ebe"'
++ instance0=i-26f74ebe
++ echo i-26f74ebe
+i-26f74ebe
++ aws ec2 create-tags --resources i-26f74ebe --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-26f74ebe
+++ aws ec2 describe-instances --instance-ids i-26f74ebe --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.47.145
++ echo ip_address=172.30.47.145
+ip_address=172.30.47.145
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo null
++ '[' null '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-26f74ebe --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"ok"'
++ '[' ok '!=' ok ']'
++ ssh -T -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.47.145 -o StrictHostKeyChecking=no
++ cat /var/lib/jenkins/scripts/efs_mount.sh
+Warning: Permanently added '172.30.47.145' (ECDSA) to the list of known hosts.
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/httpd-site.conf 'ec2-user@172.30.47.145:~'
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/LogUpload.php 'ec2-user@172.30.47.145:~'
++ ssh -T -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.47.145 -o StrictHostKeyChecking=no
++ cat /var/lib/jenkins/scripts/setupLogUpload.sh
+mkdir: cannot create directory ‘/var/www/installer.nemetschek.net’: Permission denied
+mkdir: cannot create directory ‘/var/www/installer.nemetschek.net’: Permission denied
+cp: cannot create regular file ‘/etc/httpd/sites/1-installer.nemetschek.net.conf’: Permission denied
+chmod: cannot access ‘/etc/httpd/sites/1-installer.nemetschek.net.conf’: No such file or directory
+cp: cannot create regular file ‘/var/www/installer.nemetschek.net/Release/’: No such file or directory
+chmod: cannot access ‘/var/www/installer.nemetschek.net/Release/’: No such file or directory
+touch: cannot touch ‘/var/www/installer.nemetschek.net/logfiles/log_upload_debug.txt’: No such file or directory
+touch: cannot touch ‘/var/www/installer.nemetschek.net/logfiles/log_upload_log.txt’: No such file or directory
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

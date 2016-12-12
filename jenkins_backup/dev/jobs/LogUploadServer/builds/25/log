@@ -1,0 +1,32 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson4170789516538129339.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-33833dab"'
++ echo '"i-33833dab"'
+"i-33833dab"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-33833dab"'
++ instance0=i-33833dab
++ aws ec2 create-tags --resources i-33833dab --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-33833dab
+++ aws ec2 describe-instances --instance-ids i-33833dab --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.104.139
++ echo ip_address=172.30.104.139
+ip_address=172.30.104.139
+++ aws ec2 describe-instance-status --instance-ids i-a4a01e3c --query 'InstanceStatuses[0].InstanceStatus.Status'
++ instance_status=null
++ echo null
+null
++ ssh -vvv -tt -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.104.139 -o StrictHostKeyChecking=no
+OpenSSH_6.6.1, OpenSSL 1.0.1k-fips 8 Jan 2015
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to 172.30.104.139 [172.30.104.139] port 22.
+debug1: connect to address 172.30.104.139 port 22: Connection refused
+ssh: connect to host 172.30.104.139 port 22: Connection refused
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

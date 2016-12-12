@@ -1,0 +1,85 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson1863127495974751477.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-f7229c6f"'
++ echo '"i-f7229c6f"'
+"i-f7229c6f"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-f7229c6f"'
++ instance0=i-f7229c6f
++ aws ec2 create-tags --resources i-f7229c6f --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-f7229c6f
+++ aws ec2 describe-instances --instance-ids i-f7229c6f --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.77.98
++ echo ip_address=172.30.77.98
+ip_address=172.30.77.98
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo null
++ '[' null '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-f7229c6f --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"ok"'
++ '[' ok '!=' ok ']'
++ scp -o StrictHostKeyChecking=no -i~/keys/devlogupload.pem /var/lib/jenkins/code/httpd-site.conf 'ec2-user@172.30.77.98:~'
+Warning: Identity file ~/keys/devlogupload.pem not accessible: No such file or directory.
+Warning: Permanently added '172.30.77.98' (ECDSA) to the list of known hosts.
+Permission denied (publickey).
+lost connection
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

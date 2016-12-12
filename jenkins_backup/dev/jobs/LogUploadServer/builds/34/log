@@ -1,0 +1,173 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson2239169743973105878.sh
++ instance0=i-33833dab
++ echo i-33833dab
+i-33833dab
+++ aws ec2 describe-instances --instance-ids i-33833dab --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.104.139
++ echo ip_address=172.30.104.139
+ip_address=172.30.104.139
+++ aws ec2 describe-instance-status --instance-ids i-33833dab --query 'InstanceStatuses[0].InstanceStatus.Status'
++ '[' '"ok"' = ok ']'
++ ssh -vvv -tt -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.104.139 -o StrictHostKeyChecking=no
+OpenSSH_6.6.1, OpenSSL 1.0.1k-fips 8 Jan 2015
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 56: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to 172.30.104.139 [172.30.104.139] port 22.
+debug1: Connection established.
+debug3: Incorrect RSA1 identifier
+debug3: Could not load "/var/lib/jenkins/keys/devlogupload.pem" as a RSA1 public key
+debug1: identity file /var/lib/jenkins/keys/devlogupload.pem type -1
+debug1: identity file /var/lib/jenkins/keys/devlogupload.pem-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_6.6.1
+debug1: match: OpenSSH_6.6.1 pat OpenSSH_6.6.1* compat 0x04000000
+debug2: fd 3 setting O_NONBLOCK
+debug3: load_hostkeys: loading entries for host "172.30.104.139" from file "/var/lib/jenkins/.ssh/known_hosts"
+debug3: load_hostkeys: loaded 0 keys
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-dss-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-dss-cert-v00@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-rsa,ssh-dss
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-sha1,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com
+debug2: kex_parse_kexinit: none,zlib@openssh.com
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: mac_setup: setup hmac-md5-etm@openssh.com
+debug1: kex: server->client aes128-ctr hmac-md5-etm@openssh.com none
+debug2: mac_setup: setup hmac-md5-etm@openssh.com
+debug1: kex: client->server aes128-ctr hmac-md5-etm@openssh.com none
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: kex: curve25519-sha256@libssh.org need=16 dh_need=16
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ECDSA ad:ff:61:40:82:fa:cd:e0:1e:44:88:3f:0f:17:96:a0
+debug3: load_hostkeys: loading entries for host "172.30.104.139" from file "/var/lib/jenkins/.ssh/known_hosts"
+debug3: load_hostkeys: loaded 0 keys
+Warning: Permanently added '172.30.104.139' (ECDSA) to the list of known hosts.
+debug1: ssh_ecdsa_verify: signature correct
+debug2: kex_derive_keys
+debug2: set_newkeys: mode 1
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug2: set_newkeys: mode 0
+debug1: SSH2_MSG_NEWKEYS received
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug2: service_accept: ssh-userauth
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug2: key: /var/lib/jenkins/keys/devlogupload.pem ((nil)), explicit
+debug1: Authentications that can continue: publickey
+debug3: start over, passed a different list publickey
+debug3: preferred gssapi-keyex,gssapi-with-mic,publickey,keyboard-interactive,password
+debug3: authmethod_lookup publickey
+debug3: remaining preferred: keyboard-interactive,password
+debug3: authmethod_is_enabled publickey
+debug1: Next authentication method: publickey
+debug1: Trying private key: /var/lib/jenkins/keys/devlogupload.pem
+debug1: key_parse_private2: missing begin marker
+debug1: read PEM private key done: type RSA
+debug3: sign_and_send_pubkey: RSA 95:cb:e6:08:6f:11:1c:3a:ae:90:b3:26:74:64:a8:71
+debug2: we sent a publickey packet, wait for reply
+debug1: Authentication succeeded (publickey).
+Authenticated to 172.30.104.139 ([172.30.104.139]:22).
+debug2: fd 4 setting O_NONBLOCK
+debug2: fd 5 setting O_NONBLOCK
+debug3: fd 6 is O_NONBLOCK
+debug1: channel 0: new [client-session]
+debug3: ssh_session2_open: channel_new: 0
+debug2: channel 0: send open
+debug1: Requesting no-more-sessions@openssh.com
+debug1: Entering interactive session.
+debug2: callback start
+debug2: fd 3 setting TCP_NODELAY
+debug3: packet_set_tos: set IP_TOS 0x10
+debug2: client_session2_setup: id 0
+debug2: channel 0: request pty-req confirm 1
+debug1: tty_make_modes: no fd or tio
+debug1: Sending environment.
+debug3: Ignored env HUDSON_SERVER_COOKIE
+debug3: Ignored env SHELL
+debug3: Ignored env TERM
+debug3: Ignored env BUILD_TAG
+debug3: Ignored env WORKSPACE
+debug3: Ignored env USER
+debug3: Ignored env NLSPATH
+debug3: Ignored env JENKINS_HOME
+debug3: Ignored env PATH
+debug3: Ignored env PWD
+debug1: Sending env LANG = en_US.UTF-8
+debug2: channel 0: request env confirm 0
+debug3: Ignored env JOB_NAME
+debug3: Ignored env BUILD_DISPLAY_NAME
+debug3: Ignored env XFILESEARCHPATH
+debug3: Ignored env BUILD_ID
+debug3: Ignored env JOB_BASE_NAME
+debug3: Ignored env HOME
+debug3: Ignored env SHLVL
+debug3: Ignored env JENKINS_SERVER_COOKIE
+debug3: Ignored env EXECUTOR_NUMBER
+debug3: Ignored env NODE_LABELS
+debug3: Ignored env LOGNAME
+debug3: Ignored env HUDSON_HOME
+debug3: Ignored env NODE_NAME
+debug3: Ignored env BUILD_NUMBER
+debug3: Ignored env HUDSON_COOKIE
+debug3: Ignored env _
+debug2: channel 0: request shell confirm 1
+debug2: callback done
+debug2: channel 0: open confirm rwindow 0 rmax 32768
+debug2: channel_input_status_confirm: type 99 id 0
+debug2: PTY allocation request accepted on channel 0
+debug2: channel 0: rcvd adjust 2097152
+debug2: channel_input_status_confirm: type 99 id 0
+debug2: shell request accepted on channel 0
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2016.09-release-notes/
+debug2: channel 0: read<=0 rfd 4 len 0
+debug2: channel 0: read failed
+debug2: channel 0: close_read
+debug2: channel 0: input open -> drain
+debug2: channel 0: ibuf empty
+debug2: channel 0: send eof
+debug2: channel 0: input drain -> closed
+mkdir ~/efs-mount-point  
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.amazonaws.com:/   ~/efs-mount-point 
+]0;ec2-user@LogUploadWebServer:~[?1034h[ec2-user@LogUploadWebServer ~]$ mkdir ~/efs-mount-point  
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576 ,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.ama zonaws.com:/   ~/efs-mount-point 
+mount.nfs4: Connection timed out
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ debug1: channel 0: free: client-session, nchannels 1
+debug3: channel 0: status: The following connections are open:
+  #0 client-session (t4 r0 i3/0 o0/0 fd -1/5 cc -1)
+
+debug1: fd 0 clearing O_NONBLOCK
+debug1: fd 1 clearing O_NONBLOCK
+debug3: fd 2 is not O_NONBLOCK
+Killed by signal 15.
+Build was aborted
+Aborted by [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Finished: ABORTED

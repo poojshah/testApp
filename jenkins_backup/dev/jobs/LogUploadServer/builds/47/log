@@ -1,0 +1,108 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson4335693570967139247.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-81fb4219"'
++ echo '"i-81fb4219"'
+"i-81fb4219"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-81fb4219"'
++ instance0=i-81fb4219
++ echo i-81fb4219
+i-81fb4219
++ aws ec2 create-tags --resources i-81fb4219 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-81fb4219
+++ aws ec2 describe-instances --instance-ids i-81fb4219 --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.44.100
++ echo ip_address=172.30.44.100
+ip_address=172.30.44.100
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo null
++ '[' null '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-81fb4219 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"ok"'
++ '[' ok '!=' ok ']'
++ ssh -tt -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.44.100 -o StrictHostKeyChecking=no
++ cat /var/lib/jenkins/scripts/efs_mount.sh
+Warning: Permanently added '172.30.44.100' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2016.09-release-notes/
+#!/bin/sh
+
+mkdir ~/efs-mount-point  
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.amazonaws.com:/ ~/efs-mount-point 
+]0;ec2-user@LogUploadWebServer:~[?1034h[ec2-user@LogUploadWebServer ~]$ #!/bin/sh
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ 
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ mkdir ~/efs-mount-point  
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576 ,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.ama zonaws.com:/ ~/efs-mount-point 
+]0;ec2-user@LogUploadWebServer:~[ec2-user@LogUploadWebServer ~]$ Killed by signal 15.
+Build was aborted
+Aborted by [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Finished: ABORTED

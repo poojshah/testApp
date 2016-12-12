@@ -1,0 +1,15 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson5661203170743831561.sh
++ instance0=i-33833dab
++ echo i-33833dab
+i-33833dab
+++ aws ec2 describe-instances --instance-ids i-33833dab --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.104.139
++ echo ip_address=172.30.104.139
+ip_address=172.30.104.139
+++ aws ec2 describe-instance-status --instance-ids i-33833dab --query 'InstanceStatuses[0].InstanceStatus.Status'
++ 'while[ "ok" = ok ]'
+/tmp/hudson5661203170743831561.sh: line 28: while[ "ok" = ok ]: command not found
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

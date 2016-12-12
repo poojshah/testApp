@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
+mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+
+#Create instance
+# TO DO : Add Jenkins aws profile here
+# TO DO : Add mapping.json to S3 or repo
+instance_id=$(aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2  --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data $userdata --block-device-mappings $mapping --query &apos;Instances[0].InstanceId&apos;);
+echo $instance_id
+
+instance0=$(echo $instance_id | sed &apos;s/^&quot;\(.*\)&quot;/\1/&apos;)
+echo $instance0
+
+#creating tags
+aws ec2 create-tags --resources $instance0 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer;
+
+#rebooting instances
+aws ec2 reboot-instances --instance-ids $instance0
+
+#Fetch IP Address
+ip_address=$(aws ec2 describe-instances --instance-ids $instance0 --output text --query &apos;Reservations[*].Instances[*].PrivateIpAddress&apos;)
+echo ip_address=$ip_address
+
+#Wait while the instance comes up
+while [ $(echo $(aws ec2 describe-instance-status --instance-ids $instance0 --query &apos;InstanceStatuses[0].InstanceStatus.Status&apos;)| sed &apos;s/^&quot;\(.*\)&quot;/\1/&apos;) != &quot;ok&quot; ];
+do
+   echo &quot;Waiting...&quot;
+   sleep 30
+done
+
+
+#Create Mount point
+
+cat ~/scripts/efs_mount.sh | ssh -T -i ~/keys/devlogupload.pem ec2-user@&quot;$ip_address&quot; -o StrictHostKeyChecking=no 
+
+#&lt;&lt; EOF
+#mkdir ~/efs-mount-point  
+#sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 us-east-1c.fs-53cf131a.efs.us-east-1.amazonaws.com:/ ~/efs-mount-point 
+#EOF
+
+#Deploy Code
+scp -o StrictHostKeyChecking=no -i ~/keys/devlogupload.pem ~/code/httpd-site.conf ec2-user@&quot;$ip_address&quot;:~
+scp -o StrictHostKeyChecking=no -i ~/keys/devlogupload.pem ~/code/LogUpload.php ec2-user@&quot;$ip_address&quot;:~
+
+cat ~/scripts/setupLogUpload.sh | ssh -T -i ~/keys/devlogupload.pem ec2-user@&quot;$ip_address&quot; -o StrictHostKeyChecking=no 
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

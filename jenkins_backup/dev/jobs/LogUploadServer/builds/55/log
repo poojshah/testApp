@@ -1,0 +1,99 @@
+Started by user [8mha:AAAAnx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzeEgZh/dLi1CL9rNS87My84vjElNzMPAC2g7sOyAAAAA==[0mJenkins Admin
+Building in workspace /var/lib/jenkins/workspace/LogUploadServer
+[LogUploadServer] $ /bin/sh -xe /tmp/hudson6950061557594994452.sh
++ userdata=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh
++ mapping=https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json
+++ aws ec2 run-instances --image-id ami-b73b63a0 --security-group-ids sg-9fb419e2 --count 1 --instance-type t2.micro --key-name devlogupload --subnet-id subnet-22fd636b --user-data https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/common.sh --block-device-mappings https://s3.amazonaws.com/codedeploydemobucketvectorworks/LogUploadSetupScripts/mapping.json --query 'Instances[0].InstanceId'
++ instance_id='"i-09928a0c5265c7c07"'
++ echo '"i-09928a0c5265c7c07"'
+"i-09928a0c5265c7c07"
+++ sed 's/^"\(.*\)"/\1/'
+++ echo '"i-09928a0c5265c7c07"'
++ instance0=i-09928a0c5265c7c07
++ echo i-09928a0c5265c7c07
+i-09928a0c5265c7c07
++ aws ec2 create-tags --resources i-09928a0c5265c7c07 --tags Key=Name,Value=LogUploadWebServer Key=Owner,Value=pshah Key=Use,Value=UploadLogs Key=apache,Value=24 Key=php,Value=56 Key=fqdn,Value=LogUploadWebServer
++ aws ec2 reboot-instances --instance-ids i-09928a0c5265c7c07
+++ aws ec2 describe-instances --instance-ids i-09928a0c5265c7c07 --output text --query 'Reservations[*].Instances[*].PrivateIpAddress'
++ ip_address=172.30.235.252
++ echo ip_address=172.30.235.252
+ip_address=172.30.235.252
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo null
++ '[' null '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"initializing"'
++ '[' initializing '!=' ok ']'
++ echo Waiting...
+Waiting...
++ sleep 30
+++ sed 's/^"\(.*\)"/\1/'
++++ aws ec2 describe-instance-status --instance-ids i-09928a0c5265c7c07 --query 'InstanceStatuses[0].InstanceStatus.Status'
+++ echo '"ok"'
++ '[' ok '!=' ok ']'
++ ssh -T -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.235.252 -o StrictHostKeyChecking=no
++ cat /var/lib/jenkins/scripts/efs_mount.sh
+Warning: Permanently added '172.30.235.252' (ECDSA) to the list of known hosts.
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/httpd-site.conf 'ec2-user@172.30.235.252:~'
++ scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/keys/devlogupload.pem /var/lib/jenkins/code/LogUpload.php 'ec2-user@172.30.235.252:~'
++ ssh -T -i /var/lib/jenkins/keys/devlogupload.pem ec2-user@172.30.235.252 -o StrictHostKeyChecking=no
++ cat /var/lib/jenkins/scripts/setupLogUpload.sh
+-bash: line 2: /etc/httpd/conf/httpd.conf: Permission denied
+sed: couldn't open temporary file /etc/httpd/conf.modules.d/sedbOowop: Permission denied
+Stopping httpd: [  OK  ]
+Starting httpd: [  OK  ]
+Finished: SUCCESS
